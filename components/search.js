@@ -11,7 +11,7 @@ class Search {
         detail: {
           clear: false,
           message: 'Loading...',
-          color: 'white',
+          color: 'black',
         },
       });
       document.dispatchEvent(messageEvent);
