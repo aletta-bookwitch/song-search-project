@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "no-unused-vars": "off",
+    "no-plusplus": "off",
+    "radix": "off",
+    "import/extensions": "off",
+    "class-methods-use-this": "off",
+    "no-new": "off",
+    "no-console": "off"
+  }
+}
