@@ -6,14 +6,25 @@ class SongTable {
     document.addEventListener('app@song-search', (event) => {
       fetchSongs(event.detail.term)
         .then(this.handleResults)
-        .catch((error) => {
-          console.log(error);
-          this.handleResults([]);
+        .catch((_) => {
+          const messageEvent = new CustomEvent('app@song-search-message', {
+            detail: {
+              clear: false,
+              message: 'Error fetching songs',
+              color: 'red',
+            },
+          });
+          document.dispatchEvent(messageEvent);
         });
     });
   }
 
   handleResults(results) {
+    const messageEvent = new CustomEvent('app@song-search-message', {
+      detail: { clear: true },
+    });
+    document.dispatchEvent(messageEvent);
+
     const songTableBody = document.querySelector('#song-table-body');
 
     while (songTableBody.firstChild) {

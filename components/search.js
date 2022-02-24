@@ -7,8 +7,17 @@ class Search {
     const buttonElement = document.createElement('button');
     buttonElement.innerHTML = 'Search';
     buttonElement.addEventListener('click', () => {
-      const event = new CustomEvent('app@song-search', { detail: { term: textInputElement.value } });
-      document.dispatchEvent(event);
+      const messageEvent = new CustomEvent('app@song-search-message', {
+        detail: {
+          clear: false,
+          message: 'Loading...',
+          color: 'white',
+        },
+      });
+      document.dispatchEvent(messageEvent);
+
+      const searchEvent = new CustomEvent('app@song-search', { detail: { term: textInputElement.value } });
+      document.dispatchEvent(searchEvent);
     });
 
     const searchElement = document.createElement('div');
