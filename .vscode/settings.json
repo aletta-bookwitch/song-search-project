@@ -10,6 +10,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "files.eol": "\n",
+    "files.eol": "\r\n",
     "liveServer.settings.port": 5501
 }
