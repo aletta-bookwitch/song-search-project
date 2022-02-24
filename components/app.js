@@ -3,7 +3,7 @@ import Search from './search.js';
 import SongTable from './song-table.js';
 
 class App {
-  render() {
+  render = () => {
     const app = document.querySelector('#app');
     app.append(
       (new Message()).render(),
@@ -12,7 +12,7 @@ class App {
     );
 
     return app;
-  }
+  };
 }
 
 export default App;

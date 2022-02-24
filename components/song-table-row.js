@@ -4,7 +4,7 @@ class SongTableRow {
     this.trackName = trackName;
   }
 
-  render() {
+  render = () => {
     const tableBodyRow = document.createElement('tr');
     const tableBodyRowArtist = document.createElement('td');
     tableBodyRowArtist.innerHTML = this.artistName;
@@ -13,7 +13,7 @@ class SongTableRow {
     tableBodyRow.append(tableBodyRowArtist, tableBodyRowSongTitle);
 
     return tableBodyRow;
-  }
+  };
 }
 
 export default SongTableRow;

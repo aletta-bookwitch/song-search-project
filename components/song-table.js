@@ -1,5 +1,6 @@
 import SongTableRow from './song-table-row.js';
 import fetchSongs from '../fetch-songs.js';
+import { dispatchError, dispatchMessageClear } from './message.js';
 
 class SongTable {
   constructor() {
@@ -7,29 +8,25 @@ class SongTable {
       fetchSongs(event.detail.term)
         .then(this.handleResults)
         .catch((_) => {
-          const messageEvent = new CustomEvent('app@song-search-message', {
-            detail: {
-              clear: false,
-              message: 'Error fetching songs',
-              color: 'red',
-            },
-          });
-          document.dispatchEvent(messageEvent);
+          dispatchError('Error fetching songs');
+
+          const songTableBody = document.querySelector('#song-table-body');
+          this.clearElementChildren(songTableBody);
         });
     });
   }
 
-  handleResults(results) {
-    const messageEvent = new CustomEvent('app@song-search-message', {
-      detail: { clear: true },
-    });
-    document.dispatchEvent(messageEvent);
+  clearElementChildren = (element) => {
+    while (element.firstChild) {
+      element.removeChild(element.lastChild);
+    }
+  };
+
+  handleResults = (results) => {
+    dispatchMessageClear();
 
     const songTableBody = document.querySelector('#song-table-body');
-
-    while (songTableBody.firstChild) {
-      songTableBody.removeChild(songTableBody.lastChild);
-    }
+    this.clearElementChildren(songTableBody);
 
     results.forEach((result) => {
       const songTableRow = new SongTableRow(
@@ -39,9 +36,9 @@ class SongTable {
 
       songTableBody.append(songTableRow.render());
     });
-  }
+  };
 
-  render() {
+  render = () => {
     const table = document.createElement('table');
     const tableHead = document.createElement('thead');
     const tableHeadRow = document.createElement('tr');
@@ -62,7 +59,7 @@ class SongTable {
     songTable.append(table);
 
     return songTable;
-  }
+  };
 }
 
 export default SongTable;

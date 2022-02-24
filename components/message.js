@@ -1,3 +1,22 @@
+const dispatchMessage = (message, color = 'black', clear = false) => {
+  const messageEvent = new CustomEvent('app@song-search-message', {
+    detail: {
+      message,
+      color,
+      clear,
+    },
+  });
+  document.dispatchEvent(messageEvent);
+};
+
+const dispatchError = (message) => {
+  dispatchMessage(message, 'red');
+};
+
+const dispatchMessageClear = () => {
+  dispatchMessage('', '', true);
+};
+
 class Message {
   constructor() {
     document.addEventListener('app@song-search-message', (event) => {
@@ -15,14 +34,14 @@ class Message {
     });
   }
 
-  render() {
+  render = () => {
     const message = document.createElement('p');
     message.setAttribute('id', 'message');
     message.innerHTML = 'test';
     message.style.display = 'none';
 
     return message;
-  }
+  };
 }
-
+export { dispatchMessage, dispatchError, dispatchMessageClear };
 export default Message;

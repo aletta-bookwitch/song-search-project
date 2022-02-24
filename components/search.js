@@ -1,5 +1,7 @@
+import { dispatchMessage } from './message.js';
+
 class Search {
-  render() {
+  render = () => {
     const textInputElement = document.createElement('input');
     textInputElement.setAttribute('id', 'searchTerm');
     textInputElement.setAttribute('type', 'text');
@@ -7,14 +9,7 @@ class Search {
     const buttonElement = document.createElement('button');
     buttonElement.innerHTML = 'Search';
     buttonElement.addEventListener('click', () => {
-      const messageEvent = new CustomEvent('app@song-search-message', {
-        detail: {
-          clear: false,
-          message: 'Loading...',
-          color: 'black',
-        },
-      });
-      document.dispatchEvent(messageEvent);
+      dispatchMessage('Loading...');
 
       const searchEvent = new CustomEvent('app@song-search', { detail: { term: textInputElement.value } });
       document.dispatchEvent(searchEvent);
@@ -25,7 +20,7 @@ class Search {
     searchElement.append(textInputElement, buttonElement);
 
     return searchElement;
-  }
+  };
 }
 
 export default Search;
