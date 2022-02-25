@@ -1,6 +1,6 @@
-import Message from './message.js';
-import Search from './search.js';
-import SongTable from './song-table.js';
+import Message from './message';
+import Search from './search';
+import SongTable from './song-table';
 
 class App {
   render = () => {

@@ -1,4 +1,4 @@
-import { dispatchMessage } from './message.js';
+import { dispatchMessage } from './message';
 
 class Search {
   render = () => {

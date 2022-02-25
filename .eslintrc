@@ -12,6 +12,7 @@
     "import/extensions": "off",
     "class-methods-use-this": "off",
     "no-new": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

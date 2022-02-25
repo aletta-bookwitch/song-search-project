@@ -1,15 +1,10 @@
 {
-    "cSpell.words": [
-        "Aleta",
-        "Bukvic",
-        "Zadatak"
-    ],
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "files.autoSave": "onFocusChange",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "files.eol": "\r\n",
+    "files.eol": "\n",
     "liveServer.settings.port": 5501
 }

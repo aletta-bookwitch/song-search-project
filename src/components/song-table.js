@@ -1,6 +1,6 @@
-import SongTableRow from './song-table-row.js';
-import fetchSongs from '../fetch-songs.js';
-import { dispatchError, dispatchMessageClear } from './message.js';
+import SongTableRow from './song-table-row';
+import fetchSongs from '../fetch-songs';
+import { dispatchError, dispatchMessageClear } from './message';
 
 class SongTable {
   constructor() {
